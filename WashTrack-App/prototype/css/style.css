@@ -1,0 +1,269 @@
+/* ==========================================================
+   WashTrack shared stylesheet
+   Starts with the style-guide variables (05-style-guide.md)
+   ========================================================== */
+:root {
+  /* Core colors */
+  --color-primary: #0e8fa6;
+  --color-primary-text: #ffffff;   /* text on primary button */
+  --color-bg: #eef6f8;
+  --color-surface: #ffffff;        /* cards */
+  --color-text: #12263a; /*  body text. Contrast on bg: 15.4:1. passed */
+  --color-text-muted: #5b7083;
+  --color-border: #d5e3e9;
+  --color-success: #1c9a5b;
+  --color-success-bg: #d6f1e3;
+  --color-error: #d64545;
+
+  /* Typography */
+  --font-heading: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
+  /* Shape and spacing */
+  --radius-input: 9px;
+  --radius-button: 10px;
+  --radius-card: 14px;
+  --space-input: 9px 10px;
+  --space-button: 10px 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #35c0d6;
+    --color-primary-text: #08212b;
+    --color-bg: #0d1b26;
+    --color-surface: #14293a;
+    --color-text: #e6f0f5;
+    --color-text-muted: #93a9b8;
+    --color-border: #25405a;
+    --color-success: #58d391;
+    --color-success-bg: #12402b;
+  }
+}
+
+/* ---------- Layout-only additions (not in the style guide) ---------- */
+:root {
+  --gap: 16px;
+  --page-max: 960px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, .brand-name {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+h1 { font-size: 1.5rem; }
+
+a { color: var(--color-primary); }
+
+.site-header, main {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--gap);
+}
+
+/* ---------- Header and navigation ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  width: 44px; height: 44px; flex: none;
+  border: 5px solid var(--color-primary);
+  border-radius: 50%;
+}
+.brand-name { font-size: 1.25rem; font-weight: 700; }
+.brand-tagline { margin: 0; font-size: 0.9rem; color: var(--color-text-muted); }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+.nav a {
+  padding: var(--space-button);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-button);
+}
+.nav a:hover { color: var(--color-text); }
+.nav a[aria-current="page"] {
+  font-weight: 700;
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+}
+
+/* ---------- Buttons ---------- */
+.btn, button {
+  display: inline-block;
+  padding: var(--space-button);
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  cursor: pointer;
+}
+.btn-primary, button[type="submit"] {
+  font-weight: 700;
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-danger { color: var(--color-error); border-color: var(--color-error); }
+.btn-small { padding: 6px 12px; font-size: 0.9rem; }
+
+.btn:focus-visible, button:focus-visible,
+input:focus-visible, select:focus-visible, .nav a:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Inputs ---------- */
+input, select {
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-input);
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+/* ---------- List page ---------- */
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-bottom: var(--gap);
+}
+.page-head .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: var(--gap); margin-bottom: var(--gap); }
+.toolbar input[type="search"] { flex: 2 1 240px; }
+.toolbar select { flex: 1 1 180px; }
+
+.table-card { overflow: hidden; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  padding: 12px var(--gap);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+thead th {
+  font-family: var(--font-heading);
+  border-bottom: 2px solid var(--color-border);
+}
+tbody tr:last-child td { border-bottom: 0; }
+
+.status {
+  display: inline-block;
+  padding: 2px 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+}
+.status-done {
+  color: var(--color-success);
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+}
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.table-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-top: var(--gap);
+  color: var(--color-text-muted);
+}
+.table-footer p { margin: 0; }
+.pagination { display: flex; gap: 8px; }
+.pagination [aria-current="page"] {
+  font-weight: 700;
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- Form page ---------- */
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  padding: 24px;
+}
+.form h1, .form .hint, .form .form-actions { grid-column: 1 / -1; }
+.hint { margin: 4px 0 24px; color: var(--color-text-muted); }
+
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: var(--gap); }
+.field label { font-weight: 700; }
+
+.error { margin: 0; font-size: 0.9rem; color: var(--color-error); }
+
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+/* ---------- Phones: table becomes stacked cards, no sideways scroll ---------- */
+@media (max-width: 700px) {
+  .form { grid-template-columns: 1fr; padding: var(--gap); }
+
+  .table-card { background: transparent; border: 0; border-radius: 0; overflow: visible; }
+  table, tbody, tr, td { display: block; }
+  thead {  /* hidden visually, still available to screen readers */
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);
+  }
+  tr {
+    margin-bottom: var(--gap);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+  }
+  td {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap);
+    padding: 8px var(--gap);
+    border-bottom: 0;
+    overflow-wrap: anywhere;
+  }
+  td::before { content: attr(data-label); flex: none; font-weight: 700; }
+  td.row-actions-cell::before { display: none; }
+}

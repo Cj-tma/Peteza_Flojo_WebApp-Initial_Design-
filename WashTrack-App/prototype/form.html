@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New order | WashTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div>
+        <p class="brand-name">WashTrack</p>
+        <p class="brand-tagline">Laundry order tracking</p>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="#">Dashboard</a>
+      <a href="list.html" aria-current="page">Orders</a>
+      <a href="#">Customers</a>
+      <a href="#">Log out</a>
+    </nav>
+  </header>
+
+  <main>
+    <form action="#" method="post" class="form card">
+      <h1>New order</h1>
+      <p class="hint">Fields marked * are required. Order ID and order date are filled in automatically.</p>
+
+      <!-- name="..." matches the column in the Laundry_Order table -->
+      <div class="field">
+        <label for="Pickup_Code">Pickup code *</label>
+        <input id="Pickup_Code" name="Pickup_Code" type="text" maxlength="20" required>
+        <p class="error">! Pickup code is required.</p> <!-- sample error from wireframe -->
+      </div>
+
+      <div class="field">
+        <label for="Expected_Claim_Date">Expected claim date</label>
+        <input id="Expected_Claim_Date" name="Expected_Claim_Date" type="date">
+      </div>
+
+      <div class="field">
+        <label for="Customer_ID">Customer *</label>
+        <select id="Customer_ID" name="Customer_ID" required>
+          <option value="">Choose one</option>
+          <option value="1">Maria Santos</option>      <!-- rows from Customer -->
+          <option value="2">Juan Dela Cruz</option>
+          <option value="3">Ana Reyes</option>
+          <option value="4">Pedro Garcia</option>
+          <option value="5">Liza Mendoza</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Staff_ID">Staff *</label>
+        <select id="Staff_ID" name="Staff_ID" required>
+          <option value="">Choose one</option>
+          <option value="1">Staff member 1</option>    <!-- rows from Staff -->
+          <option value="2">Staff member 2</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Current_Status_ID">Status *</label>
+        <select id="Current_Status_ID" name="Current_Status_ID" required>
+          <option value="">Choose one</option>
+          <option value="1">Received</option>          <!-- rows from Order_Status -->
+          <option value="2">Washing</option>
+          <option value="3">Ready for pickup</option>
+          <option value="4">Claimed</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Save</button>
+        <a href="list.html" class="btn">Cancel</a>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
